@@ -1,17 +1,78 @@
-<!-- documents/templates/documents/document_upload.html -->
+<!-- documents/templates/documents/upload_document.html -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Upload Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Subir documentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload a new document</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
+        <h1>Subir un nuevo documento</h1>
+        <div class="form-group">
+            <label for="id_title">Nombre:</label>
+            <input type="text" name="title" id="id_title">
+        </div>
+        <div class="form-group">
+            <label for="id_file">Archivo:</label>
+            <input type="file" name="file" id="id_file">
+        </div>
+        <button type="submit">Subir</button>
     </form>
 </body>
 </html>
