@@ -10,6 +10,8 @@ import json
 import logging
 from django.utils.timezone import now
 from django.http import JsonResponse
+#from google.cloud import logging
+
 
 def document_upload(request):
     if request.method == 'POST':

@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-
+#from google.cloud import logging as google_cloud_logging
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'asrSprint2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'monitoring_db',
+        'USER': 'monitoring_user',
+        'PASSWORD': 'isis2503',
+        'HOST': '10.182.0.2',
+        'PORT': '',
     }
 }
 
@@ -134,20 +138,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # mysite/settings.py
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'google_cloud': {
-            'class': 'google.cloud.logging.handlers.CloudLoggingHandler',
-            'level': 'INFO',
-        },
-    },
-    'loggers': {
-        '': {  # Configura el logger raíz
-            'handlers': ['google_cloud'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-    },
-}
+
