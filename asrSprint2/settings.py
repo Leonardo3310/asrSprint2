@@ -131,3 +131,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# mysite/settings.py
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'google_cloud': {
+            'class': 'google.cloud.logging.handlers.CloudLoggingHandler',
+            'level': 'INFO',
+        },
+    },
+    'loggers': {
+        '': {  # Configura el logger raíz
+            'handlers': ['google_cloud'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
