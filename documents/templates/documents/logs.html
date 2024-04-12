@@ -1,0 +1,17 @@
+<!-- documents/templates/documents/logs.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Entries</title>
+</head>
+<body>
+    <h1>Log Entries</h1>
+    <ul>
+        {% for log in logs %}
+        <li>{{ log.timestamp }} - {{ log.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
